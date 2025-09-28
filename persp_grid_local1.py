@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#overlaying perpsective grid on local image using corner point pixels of global image and using optimized homography matrix
 import cv2
 import numpy as np
 
