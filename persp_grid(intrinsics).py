@@ -13,7 +13,7 @@ dist_coeffs = np.zeros((5,1), dtype=np.float64)
 
 # --- Image ---
 
-image_path = "/home/kabs_d/mast3r/dust3r/croco/assets/floor2.jpg"
+image_path = "/home/kabs_d/mast3r/floor2.jpg"
 image = cv2.imread(image_path)
 if image is None:
     raise FileNotFoundError(image_path)
