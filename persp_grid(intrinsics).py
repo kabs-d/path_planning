@@ -1,4 +1,3 @@
-#plotting the global perspective grid using optimized intrinsic matrix and world coordinates
 #!/usr/bin/env python3
 import cv2
 import numpy as np
@@ -12,7 +11,6 @@ K = np.array([
 dist_coeffs = np.zeros((5,1), dtype=np.float64)
 
 # --- Image ---
-
 image_path = "/home/kabs_d/mast3r/floor2.jpg"
 image = cv2.imread(image_path)
 if image is None:
@@ -102,12 +100,27 @@ for i, p in enumerate(proj_pts):
     cv2.circle(out, (px, py), 2, (0,255,0), -1)
     print(f"Projected point {i}: ({px}, {py})")
 
-# --- Draw horizontal lines ---
-for i in range(0, len(proj_pts)-1, 2):
-    y1 = int(round(proj_pts[i][1]))
-    y2 = int(round(proj_pts[i+1][1]))
-    y_avg = (y1 + y2) // 2
-    cv2.line(out, (0, y_avg), (width-1, y_avg), (255,0,0), 1)
+# --- MODIFIED SECTION START ---
+# --- Draw horizontal lines using polyfit for better perspective ---
+for i in range(0, len(proj_pts), 2):
+    # Get the pair of points that form a horizontal line in the world
+    pt1 = proj_pts[i]
+    pt2 = proj_pts[i+1]
+    
+    # Extract their x and y coordinates for the line fit
+    x_coords = [pt1[0], pt2[0]]
+    y_coords = [pt1[1], pt2[1]]
+    
+    # Perform linear regression to find the best-fit line
+    m, b = np.polyfit(x_coords, y_coords, 1)
+    
+    # Calculate the start and end points of the line at the image edges
+    y_start = int(round(m * 0 + b))
+    y_end = int(round(m * (width - 1) + b))
+    
+    # Draw the fitted line
+    cv2.line(out, (0, y_start), (width - 1, y_end), (255, 0, 0), 1)
+# --- MODIFIED SECTION END ---
 
 # --- Vertical lines for main columns (0 and 54) ---
 main_columns = [0.0, 54.0]
