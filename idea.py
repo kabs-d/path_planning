@@ -14,7 +14,7 @@ import os
 import matplotlib.pyplot as plt   ### NEW ###
 
 # ----------------- USER SETTINGS -----------------
-IMAGE_PATH = "/home/kabs_d/mast3r/dust3r/croco/assets/floor2.jpg"
+IMAGE_PATH = "/home/kabs_d/mast3r/floor2.jpg"
 
 WORLD_POINTS = np.array([
     [0,   0,    0],
