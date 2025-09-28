@@ -1,3 +1,4 @@
+#Script to compare y coordinates obtained by projecting using parameters obtained by optimization at various x cooridnates with ground truth
 import matplotlib.pyplot as plt
 
 # Modeled y-values
