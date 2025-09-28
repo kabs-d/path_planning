@@ -5,7 +5,7 @@ Homography refinement via direct optimization of matrix parameters using PyTorch
 - The 8 free parameters of the homography matrix are treated as learnable
   tensors and are directly refined by an Adam optimizer to minimize
   reprojection error.
-- This version uses a hard-coded list of point correspondences.
+- This version uses a hard-coded list of point correspondences to compuet RMSE Reprojection Error.
 """
 
 import cv2
@@ -26,7 +26,7 @@ H0 = np.array([[ 4.82022100e-01 ,-1.80439926e+00 , 8.99994220e+02],
 
 # Optimization Settings
 LR = 1e-5
-N_ITERS = 10000
+N_ITERS = 100000
 PRINT_EVERY = 2000
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ----------------------------------------------------
