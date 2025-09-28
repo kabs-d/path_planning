@@ -1,6 +1,6 @@
 #Gradient-based optimization of camera intrinsics and extrinsics from interactive 2D-3D correspondences.
 #Starts with an initial intrinsic matrix and optimizes the entries of the intrinsic matrix by considering them as Learnable Parameters
-
+#Uses the RMSE Reprojection Error as Loss Function to update the parameters
 """
 Interactive OpenCV click + PyTorch refinement of camera intrinsics & extrinsics.
 
