@@ -1,3 +1,4 @@
+#Interactive Script to get pixel coordinates of clicked points
 import cv2
 
 # Load image
