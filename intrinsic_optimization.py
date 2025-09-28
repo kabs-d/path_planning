@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#Gradient-based optimization of camera intrinsics and extrinsics from interactive 2D-3D correspondences.
+#Starts with an initial intrinsic matrix and optimizes the entries of the intrinsic matrix by considering them as Learnable Parameters
+
 """
 Interactive OpenCV click + PyTorch refinement of camera intrinsics & extrinsics.
 
