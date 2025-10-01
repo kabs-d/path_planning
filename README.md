@@ -8,7 +8,41 @@ Key Features
   4) Gradient-Based Optimization: Refine camera parameters and homography matrices by treating them as learnable tensors in PyTorch and minimizing reprojection error.
   5) Perspective Grid Visualization: Project 3D world grids onto 2D images to visually verify the accuracy of calculated camera poses and homographies.
   6) Mathematical Model Fitting: Analyze point data to find the best-fitting mathematical function for extrapolation and forecasting.
+Installation
+To get the project running on your local machine, please follow these steps. It is highly recommended to use a Python virtual environment to avoid conflicts with other projects.
 
+1. Clone the Repository
+First, clone this repository to your local machine using git:
+
+git clone [https://github.com/your-username/your-repository.git](https://github.com/kabs-d/path_planning)
+cd your-repository
+(Replace the URL with your actual repository link.)
+
+2. Install Standard Dependencies
+The project's standard library dependencies are listed in the requirements.txt file. You can install all of them with a single command:
+
+Bash
+
+pip install -r requirements.txt
+This will install the following required libraries:
+
+Plaintext
+
+opencv-python
+numpy
+torch
+matplotlib
+scipy
+scikit-learn
+gradio_client
+3. Special Installation for MASt3R
+Important: The MASt3R library is a deep learning model and is not available on the standard Python Package Index (PyPI). Therefore, it cannot be installed with the command above.
+
+You must install it manually by following the official instructions from its source repository.
+
+Action Required: Visit the official MASt3R GitHub repository and follow their setup guide to install the library and download the model weights.
+
+Once you have completed these steps, your environment will be fully configured to run all the scripts in this project.
 FILE DESCRIPTIONS:
 
 Camera_Calibration_Script.py : This script performs live camera calibration using a checkerboard pattern and OpenCV. It captures video from a webcam, detects the checkerboard corners in multiple frames, and allows the user to capture valid views. The script then calculates the camera's intrinsic matrix and distortion coefficients, printing the results to the console. These values are crucial for correcting lens distortion in subsequent computer vision applications.
