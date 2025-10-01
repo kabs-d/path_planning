@@ -40,7 +40,7 @@ scikit-learn
 
 gradio_client
 
-3. Special Installation for MASt3R
+3.Special Installation for MASt3R
 Important: The MASt3R library is a deep learning model and is not available on the standard Python Package Index (PyPI). Therefore, it cannot be installed with the command above.
 
 You must install it manually by following the official instructions from its source repository.
