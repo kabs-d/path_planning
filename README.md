@@ -11,7 +11,8 @@ Key Features
 Installation
 To get the project running on your local machine, please follow these steps. It is highly recommended to use a Python virtual environment to avoid conflicts with other projects.
 
-1. Clone the Repository
+Clone the Repository
+
 First, clone this repository to your local machine using git
 ```bash
 git clone https://github.com/kabs-d/path_planning
@@ -19,7 +20,8 @@ cd path_planning
 ```
 
 
-3. Install Standard Dependencies
+Install Standard Dependencies
+
 The project's standard library dependencies are listed in the requirements.txt file. You can install all of them with a single command:
 
 ```bash
@@ -40,7 +42,8 @@ scikit-learn
 
 gradio_client
 
-3.Special Installation for MASt3R
+Special Installation for MASt3R
+
 Important: The MASt3R library is a deep learning model and is not available on the standard Python Package Index (PyPI). Therefore, it cannot be installed with the command above.
 
 You must install it manually by following the official instructions from its source repository.
