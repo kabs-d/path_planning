@@ -29,18 +29,19 @@ pip install -r requirements.txt
 ```
 This will install the following required libraries:
 
-opencv-python
+1) opencv-python
 
-numpy
+2) numpy
 
-torch
+3) torch
 
-matplotlib
-scipy
+4) matplotlib
 
-scikit-learn
+5) scipy
 
-gradio_client
+6) scikit-learn
+
+7) gradio_client
 
 Special Installation for MASt3R
 
