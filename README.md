@@ -27,15 +27,19 @@ pip install -r requirements.txt
 ```
 This will install the following required libraries:
 
-Plaintext
-
 opencv-python
+
 numpy
+
 torch
+
 matplotlib
 scipy
+
 scikit-learn
+
 gradio_client
+
 3. Special Installation for MASt3R
 Important: The MASt3R library is a deep learning model and is not available on the standard Python Package Index (PyPI). Therefore, it cannot be installed with the command above.
 
@@ -44,6 +48,7 @@ You must install it manually by following the official instructions from its sou
 Action Required: Visit the official MASt3R GitHub repository and follow their setup guide to install the library and download the model weights.
 
 Once you have completed these steps, your environment will be fully configured to run all the scripts in this project.
+
 FILE DESCRIPTIONS:
 
 Camera_Calibration_Script.py : This script performs live camera calibration using a checkerboard pattern and OpenCV. It captures video from a webcam, detects the checkerboard corners in multiple frames, and allows the user to capture valid views. The script then calculates the camera's intrinsic matrix and distortion coefficients, printing the results to the console. These values are crucial for correcting lens distortion in subsequent computer vision applications.
