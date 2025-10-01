@@ -117,7 +117,6 @@ Now, you have a new photo of the same scene from a different angle—your "Local
 You have two main ways to do this:
 
 Method A (AI-Powered & Automatic)
-This is the fastest and most robust method.
 
 Action: Run warping_mast3r.py.
 
