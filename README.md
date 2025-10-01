@@ -1,4 +1,4 @@
-This project is a collection of Python scripts, focusing on camera calibration, 3D pose estimation, and homography refinement. It demonstrates a powerful workflow that blends classical geometric vision algorithms from OpenCV with modern, gradient-based optimization in PyTorch and deep-learning-based feature matching with the MASt3R model.
+The primary objective of this project is to accurately transfer a known geometric structure—a perspective grid—from a "global" reference image onto a new "local" image of the same scene. It provides an end-to-end pipeline, starting with 3D pose estimation to create the initial grid, followed by various state-of-the-art methods for calculating the 2D homography that maps the grid to the new view. This includes automated feature matching with the MASt3R deep learning model and fine-grained PyTorch-based optimization.
 
 Key Features
  
