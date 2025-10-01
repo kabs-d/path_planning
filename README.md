@@ -34,44 +34,68 @@ persp_grid_local1.py: This script overlays a perspective grid onto a local image
 
 perspective_grid(intrinsics)_skewed_left.py: This file serves the same purpose as the persp_grid(intrinsics).py file but for the left skewed image.
 
+perspective_grid(intrinsics)_skewed_right.py: This file serves the same purpose as the persp_grid(intrinsics).py file but for the right skewed image.
+
+warping_mast3r.py: This script performs image matching and alignment using the advanced MASt3R deep learning model. It loads the pretrained model to find dense and robust feature correspondences between two images. From these matches, it accurately computes a homography matrix using RANSAC and then uses this matrix with cv2.warpPerspective to warp one image, aligning its perspective with the other. The script handles the necessary scaling between the model's inference size and the original image resolution to ensure an accurate final transformation. The output includes the warped image and a visualization of the feature matches.
+
 Getting Started: A Complete Workflow from 3D Scene to 2D Grid
 Welcome! This guide will walk you through the repository in the correct, logical order. The primary goal is to project a known 3D world grid onto a target "local" image. The key insight is that this is a multi-step process where one script's output becomes the next script's input.
 
 Step 1 (One-Time Setup): Calibrate Your Camera
-
 Before any 3D work, you must understand your camera's unique properties.
+
 Action: Run Camera_Calibration_Script.py using a checkerboard pattern.
+
 Goal: To calculate your camera's Intrinsic Matrix (K) and distortion coefficients.
+
 Result: You now have the K matrix, which you only need to calculate once for your camera.
 
 Step 2: Create the "Global" Reference Image with a Perfect Grid
 This is the foundational step. We create our "ground truth"—an image with a perfect, perspective-correct grid projected onto it from a known 3D pose.
+
 Action: Run persp_grid(intrinsics).py (or its skewed variations).
+
 Inputs:
+
 A "source" photograph (e.g., floor2.jpg).
+
 Your camera's Intrinsic Matrix (K) from Step 1.
+
 A predefined list of 3D world coordinates.
+
 Process: The script will ask you to click on points in the source photo that correspond to the known 3D coordinates. It then calculates the camera's 3D pose (extrinsics) and uses this to draw a perfect, extensive grid on the image.
+
 Result: You now have a new image file (e.g., floor2_with_grid.jpg). This is your "Global Image." It contains the crucial visual reference grid.
 
 Step 3: Find the Transformation (Homography) to a New View
 Now, you have a new photo of the same scene from a different angle—your "Local Image". Your goal is to find the Homography Matrix (H) that maps the grid from the Global Image to this new Local Image.
+
 You have two main ways to do this:
 
-Method A (AI-Powered & Automatic)
+Method A (Recommended - AI-Powered & Automatic)
 This is the fastest and most robust method.
+
 Action: Run warping_mast3r.py.
+
 Inputs:
+
 Your Global Image (with the grid) from Step 2.
+
 Your new Local Image.
+
 Process: The MASt3R model finds hundreds of robust matching points between the two images and calculates a highly accurate Homography Matrix (H).
+
 Result: You now have the crucial H matrix that connects the two views.
 
 Method B (Manual Control & Optimization)
 Choose this if you want to specify the exact points for the transformation.
+
 Action: Use my_click.py to get coordinates of key grid intersections on your Global Image.
+
 Action: Use my_click.py again to get coordinates of the exact same intersections on your Local Image.
+
 Action: Input these corresponding points into Optimizing_homography.py to compute a refined Homography Matrix (H).
+
 Result: A highly precise H matrix based on your hand-picked points.
 
 Step 4: Visualize the Grid on the Local Image
@@ -79,20 +103,26 @@ You have the H matrix. Now you can apply it to see the final result.
 
 Option 1 (Recommended - Grid Projection)
 This method is precise, clean, and computationally efficient.
+
 Action: Run persp_grid_local1.py.
+
 Inputs:
+
 Your Local Image (the original, clean version).
+
 The H matrix from Step 3.
+
 The original list of grid point coordinates from the Global Image.
+
 Process: The script uses the H matrix to mathematically transform only the grid point coordinates. It then draws a new, clean grid directly on top of your original Local Image.
+
 Result: A high-quality image with a perfectly aligned, non-degraded perspective grid.
 
 Option 2 (Full Image Warping)
 This method transforms the entire image, which is useful for direct visual comparison but can reduce image quality.
+
 Action: The warping_mast3r.py script already produces this as its primary output.
+
 Process: It uses the H matrix to warp the entire Global Image (pixels, grid, and all) to fit the perspective of the Local Image.
+
 Result: A new image that looks like the Local Image but is composed of pixels from the Global Image. The original Local Image is completely covered.
-
-perspective_grid(intrinsics)_skewed_right.py: This file serves the same purpose as the persp_grid(intrinsics).py file but for the right skewed image.
-
-warping_mast3r.py: This script performs image matching and alignment using the advanced MASt3R deep learning model. It loads the pretrained model to find dense and robust feature correspondences between two images. From these matches, it accurately computes a homography matrix using RANSAC and then uses this matrix with cv2.warpPerspective to warp one image, aligning its perspective with the other. The script handles the necessary scaling between the model's inference size and the original image resolution to ensure an accurate final transformation. The output includes the warped image and a visualization of the feature matches.
