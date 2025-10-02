@@ -1,4 +1,3 @@
-#using api of image matching web ui for warping
 from gradio_client import Client, handle_file
 import cv2
 
@@ -59,7 +58,9 @@ print("Warped image saved at:", warped_image_path)
 warped_img = cv2.imread(warped_image_path)
 if warped_img is None:
     raise RuntimeError("Failed to read warped image from path.")
-
+output_filename = "final_warped_image.jpg"
+cv2.imwrite(output_filename, warped_img)
+print(f"✅ Final image saved successfully as: {output_filename}")
 cv2.imshow("Warped Image", warped_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
