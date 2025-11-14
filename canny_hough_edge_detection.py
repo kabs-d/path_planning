@@ -7,7 +7,7 @@ import csv
 # =========================================
 # CONFIG
 # =========================================
-IMG_PATH = "/home/kabs_d/mast3r/dust3r/croco/assets/floor2.jpg"
+IMG_PATH = "/home/kabs_d/mast3r/floor2.jpg"
 OUT_DIR = Path("./hough_experiments_clean")
 OUT_DIR.mkdir(exist_ok=True)
 
